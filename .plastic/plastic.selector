@@ -1,0 +1,3 @@
+rep "Jelly Hunt@Cloudium_Studios@cloud"
+  path "/"
+    smartbranch "/main"

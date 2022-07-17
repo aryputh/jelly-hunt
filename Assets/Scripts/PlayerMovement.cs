@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         //Constantly moves player.
         if (moveLeft)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3738770256191407518}
   - component: {fileID: 694728499999028102}
   - component: {fileID: 46166739086247382}
+  - component: {fileID: 3341648379712130151}
   m_Layer: 12
   m_Name: Pellet1
   m_TagString: Pellet
@@ -139,3 +140,16 @@ CircleCollider2D:
   m_Offset: {x: -0.005, y: -0.01}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &3341648379712130151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6884279484596477030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96d81dab02d2f742a15fee5f46f16a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRend: {fileID: 2997483977635842162}

@@ -50,4 +50,9 @@ public class UpdatePanelConnection : MonoBehaviour
             }
 		}
     }
+
+	public void CheckForUpdates()
+	{
+		StartCoroutine(loadData(URL));
+	}
 }

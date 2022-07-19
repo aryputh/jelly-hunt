@@ -34,7 +34,7 @@ public class PelletManager : MonoBehaviour
 
 	IEnumerator DestroyBullet()
     {
-		Instantiate(splatter, gameObject.transform.position, Quaternion.identity);
+		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
 
 		yield return new WaitForSeconds(0.01f);
 

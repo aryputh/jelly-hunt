@@ -4150,19 +4150,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 381988094}
   sentences:
-  - '???: So you''re the jelly I have been hearing so much about...'
-  - '???: You have been ruining my plans to take over your world again and again...'
-  - '???: Why must you be so persistent in stopping me?'
-  - '???: Ha ha ha, I don''t care. I want you gone...then I can continue with my
-    world domination!'
-  - 'YOU: Why must you do this? We all live happily and peacefully together...'
-  - '???: You were one of the thousands of jellies who had color!'
-  - '???: You see, as a child, I was always made fun of...'
-  - '???: Unlike everyone else, who each had a color, I had none.'
-  - '???: I was teased and laughed at!'
-  - '???: All because of the lack of my color. Nobody wanted to be friends with me...'
-  - '???: So now, I have stolen most of the color in the world...except for you.'
-  - 'YOU (Thinking): *I must save my friends...*'
+  - '[boss]: So you''re the jelly I have been hearing so much about...'
+  - '[boss]: You have been ruining my plans to take over your world again and again...'
+  - '[boss]: Why must you be so persistent in stopping me?'
+  - '[boss]: Ha ha ha, I don''t care. I want you gone...then I can continue with
+    my world domination!'
+  - '[you]: Why must you do this? We all live happily and peacefully together...'
+  - '[boss]: You were one of the thousands of jellies who had color!'
+  - '[boss]: You see, as a child, I was always made fun of...'
+  - '[boss]: Unlike everyone else, who each had a color, I had none.'
+  - '[boss]: I was teased and laughed at!'
+  - '[boss]: All because of the lack of my color. Nobody wanted to be friends with
+    me...'
+  - '[boss]: So now, I have stolen most of the color in the world...except for you.'
+  - '[you, thinking] *I must save my friends...*'
   letterDelay: 0.025
   continueButton: {fileID: 1937732229}
   isDone: 0

@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer player;
     public bool moveLeft, moveRight;
     public float maxSpeed;
+    public int health = 1;
 
     [Header("Prevents Unlimited Jumps")]
     bool isGrounded = false;
@@ -43,7 +44,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Death")]
     public Animator playerDieAnim;
 
-    private float coyoteTime = 0.2f;
+    [Header("Coyote Jump")]
+    public float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
     // Start is called before the first frame update
@@ -85,11 +87,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (rb.velocity.y >= 0)
         {
-            rb.gravityScale = 1.5f;
+            rb.gravityScale = 1f;
         }
         else if (rb.velocity.y < 0)
         {
-            rb.gravityScale = 2f;
+            rb.gravityScale = 3f;
         }
     }
 
@@ -226,9 +228,39 @@ public class PlayerMovement : MonoBehaviour
         {
             StopMovement();
 
-            playerDieAnim.SetTrigger("playerDead");
+            health--;
 
-            StartCoroutine(Restart());
+            if (health <= 0)
+            {
+                playerDieAnim.SetTrigger("playerDead");
+                
+                StartCoroutine(Restart());
+            }
+        }
+    }
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            health--;
+
+            if (health <= 0)
+            {
+                playerDieAnim.SetTrigger("playerDead");
+
+                StartCoroutine(Restart());
+            }
+
+            //What to do...
+            if (collision.gameObject.transform.position.x < transform.position.x)
+            {
+                rb.AddRelativeForce(Vector2.right * 5, ForceMode2D.Impulse);
+            }
+            else if (collision.gameObject.transform.position.x > transform.position.x)
+            {
+                rb.AddRelativeForce(Vector2.left * 5, ForceMode2D.Impulse);
+            }
         }
     }
 }

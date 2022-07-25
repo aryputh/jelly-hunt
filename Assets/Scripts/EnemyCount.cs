@@ -21,7 +21,15 @@ public class EnemyCount : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        corruptedBlobText.text = enemies.Length.ToString();
+        
+        if(enemies.Length == 1)
+		{
+            corruptedBlobText.text = enemies.Length + " blob";
+        }
+		else
+		{
+            corruptedBlobText.text = enemies.Length + " blobs";
+        }
 
         if (enemies.Length <= 0)
         {

@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Friendly
   - Pellet
+  - Boss
   layers:
   - Default
   - TransparentFX

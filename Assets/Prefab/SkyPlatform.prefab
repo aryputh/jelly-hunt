@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8008900964804685283}
   - component: {fileID: 2116724974569478933}
   m_Layer: 9
-  m_Name: Square
+  m_Name: Friction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,11 +94,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 917025616361869672}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 60d98e4d968cda345a8b00a3ad41e615, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0004969537, y: 0.4671281}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.99951845, y: 0.065743804}
   m_EdgeRadius: 0
 --- !u!1 &4218264095109190034
 GameObject:
@@ -206,11 +206,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 4218264095109190034}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 07443cee754b6d54c9546f5fb38deb48, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08532405, y: -0.14118868}
+  m_Offset: {x: 0.08532429, y: 0.022548527}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -221,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.378996, y: 1.3087629}
+  m_Size: {x: 8.378996, y: 1.6362374}
   m_EdgeRadius: 0
 --- !u!331 &4218264095109190038
 SpriteMask:

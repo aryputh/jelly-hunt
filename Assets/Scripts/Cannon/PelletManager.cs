@@ -21,9 +21,14 @@ public class PelletManager : MonoBehaviour
 		{
 			StartCoroutine(DestroyBullet());
 		}
+
+		if (collision.gameObject.CompareTag("Boss"))
+		{
+			StartCoroutine(DestroyBullet());
+		}
 	}
 
-    private void OnTriggerEnter2D(Collider2D other)
+	private void OnTriggerEnter2D(Collider2D other)
     {
 		if (other.CompareTag("Enemy"))
 		{
@@ -36,7 +41,7 @@ public class PelletManager : MonoBehaviour
     {
 		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
 
-		yield return new WaitForSeconds(0.01f);
+		yield return new WaitForSeconds(0.02f);
 
 		Destroy(gameObject);
 	}

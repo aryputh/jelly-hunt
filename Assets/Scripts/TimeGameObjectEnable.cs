@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimeGameObjectEnable : MonoBehaviour
 {
     //Script setup
-    public GameObject CloseButton;
+    public GameObject gameobject;
     public float delayTime = 5f;
 
     // Start is called before the first frame update
@@ -23,8 +23,8 @@ public class TimeGameObjectEnable : MonoBehaviour
     //Toggles the active state after the delay time is complete
     IEnumerator EnableObject()
     {
-        CloseButton.SetActive(false);
+        gameobject.SetActive(false);
         yield return new WaitForSeconds(delayTime);
-        CloseButton.SetActive(true);
+        gameobject.SetActive(true);
     }
 }

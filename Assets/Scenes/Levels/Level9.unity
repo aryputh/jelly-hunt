@@ -2091,7 +2091,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912135470}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 56.918385, y: -2.022776, z: -1.1215745}
+  m_LocalPosition: {x: 56.88, y: -2.022776, z: -1.1215745}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 31913695}
@@ -3714,7 +3714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746543002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -56.971615, y: -2.022776, z: -1.1215745}
+  m_LocalPosition: {x: -56.88, y: -2.022776, z: -1.1215745}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 31913695}
@@ -4275,6 +4275,7 @@ MonoBehaviour:
   moveLeft: 0
   moveRight: 0
   maxSpeed: 5
+  health: 1
   isGroundedChecker: {fileID: 1823545147}
   checkGroundRadius: 0.05
   groundLayer:

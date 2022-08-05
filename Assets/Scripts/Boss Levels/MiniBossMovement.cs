@@ -24,7 +24,7 @@ public class MiniBossMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        doFlipX = true;
+        doFlipX = false;
         timer = 0;
     }
 
@@ -33,46 +33,55 @@ public class MiniBossMovement : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+		if (doFlipX == false)
+		{
+            miniBossParent.transform.localScale = new Vector3(1, 1, 1);
+		}
+		else
+		{
+            miniBossParent.transform.localScale = new Vector3(-1, 1, 1);
+        }
+
         if (startMovement)
 		{
             Debug.Log("Starting boss movement...");
             MoveBoss();
 		}
 
-        //if (startMovement)
-        //{
-        //    startMovement = false;
+		//if (startMovement)
+		//{
+		//	startMovement = false;
         //
-        //    InvokeRepeating("ApplyJumpForce", 0, 2);
-        //}
-    }
+		//	InvokeRepeating("ApplyJumpForce", 0, 2);
+		//}
+	}
 
-    public void MoveBoss()
+	public void MoveBoss()
 	{
-        if(doFlipX == false && transform.position.x != -4.9f)
+        if(doFlipX == false && miniBossParent.transform.position.x != -4.9f)
 		{
-            transform.position = Vector3.Lerp(pos1.position, pos2.position, timer / 5);
+            miniBossParent.transform.position = Vector3.Lerp(pos1.position, pos2.position, timer / 5);
         }
         //this is the line giving me problems. the player initially starts at x = 4.85 but is tped to 4.9 st the start of the lerp.
-        else if (doFlipX == false && transform.position.x == -4.9f)
+        else if (doFlipX == false && miniBossParent.transform.position.x == -4.9f)
 		{
             doFlipX = true;
             timer = 0;
             Debug.Log("Flipped boss to face right.");
         }
         
-        if (doFlipX == true && transform.position.x != 4.9f)
+        if (doFlipX == true && miniBossParent.transform.position.x != 4.9f)
         {
-            transform.position = Vector3.Lerp(pos2.position, pos1.position, timer / 5);
+            miniBossParent.transform.position = Vector3.Lerp(pos2.position, pos1.position, timer / 5);
         }
-        else if (doFlipX == true && transform.position.x == 4.9f)
+        else if (doFlipX == true && miniBossParent.transform.position.x == 4.9f)
         {
             doFlipX = false;
             timer = 0;
             Debug.Log("Flipped boss to face left.");
         }
 
-        spriteRend.flipX = doFlipX;
+        //spriteRend.flipX = doFlipX;
     }
 
     public void ApplyJumpForce()

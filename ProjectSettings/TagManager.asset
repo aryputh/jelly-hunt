@@ -11,6 +11,8 @@ TagManager:
   - Friendly
   - Pellet
   - Boss
+  - WallNotBreakPellet
+  - BossBottom
   layers:
   - Default
   - TransparentFX

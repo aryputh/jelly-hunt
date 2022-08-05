@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniBossTimeline : MonoBehaviour
 {
@@ -8,7 +9,13 @@ public class MiniBossTimeline : MonoBehaviour
     public PlayerMovement pm;
     public CameraShake cs;
     public GameObject miniBoss;
+    public GameObject miniBossParent;
     public int health;
+    public Slider healthBar;
+    public Animator anim;
+    public GameObject[] pelletSpawners;
+    public GameObject pelletPrefab;
+    public MiniBossMovement miniBossMovement;
 
     [Header("Audio")]
     public AudioSource stompFx;
@@ -24,6 +31,8 @@ public class MiniBossTimeline : MonoBehaviour
     {
         dialogueBox.SetActive(false);
         health = 10;
+
+        healthBar.value = 10;
 
         StartCoroutine(MiniBossTime());
     }
@@ -60,7 +69,9 @@ public class MiniBossTimeline : MonoBehaviour
 
         stompFx.Play();
         cs.StartCamShake();
-        miniBoss.transform.position = new Vector3(5.59f, -0.2096012f, -0.05f);
+        anim.Play("Colored_Boss", -1, 0);
+        //miniBoss.transform.position = new Vector3(4.9f, -0.2096012f, -0.05f);
+        miniBossParent.transform.position = new Vector3(4.85f, -0.2096012f, -0.05f);
         yield return new WaitForSeconds(1);
 
         //Dialog
@@ -81,6 +92,43 @@ public class MiniBossTimeline : MonoBehaviour
         regMusic.Pause();
         pm.EnableControls();
 
-        //Boss movement
+        miniBossMovement.startMovement = true;
+    }
+
+    public void SpawnPellets()
+	{
+		for (int i = 0; i < pelletSpawners.Length; i++)
+		{
+            Instantiate(pelletPrefab, pelletSpawners[i].transform.position, Quaternion.identity);
+        }
+	}
+
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+  //      if (collision.gameObject.CompareTag("Pellet"))
+		//{
+  //          print("Pellet hit boss!");
+
+  //          StartCoroutine(DestroyBulletAlternate());
+
+  //          Destroy(collision.gameObject, 3f);
+  //      }
+	}
+
+    IEnumerator DestroyBulletAlternate()
+    {
+        yield return new WaitForSeconds(0.01f);
+
+        health--;
+        healthBar.value = health;
+    }
+
+    public void PelletHitBoss()
+	{
+        print("Pellet hit boss!");
+
+        StartCoroutine(DestroyBulletAlternate());
+
+        //Destroy(collision.gameObject, 3f);
     }
 }

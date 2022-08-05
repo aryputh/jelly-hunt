@@ -245,6 +245,8 @@ public class PlayerMovement : MonoBehaviour
         {
             health--;
 
+            StopMovement();
+
             if (health <= 0)
             {
                 playerDieAnim.SetTrigger("playerDead");
@@ -261,6 +263,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector2.left * 5, ForceMode2D.Impulse);
             }
+        }
+
+        if (collision.gameObject.CompareTag("BossBottom"))
+        {
+            health = 0;
+            playerDieAnim.SetTrigger("playerDead");
+
+            StartCoroutine(Restart());
         }
     }
 }

@@ -19,12 +19,15 @@ public class PelletManager : MonoBehaviour
 	{
 		if(collision.gameObject.tag != "Player" || collision.gameObject.tag != "Friendly")
 		{
-			StartCoroutine(DestroyBullet());
+			if (collision.gameObject.tag != "WallNotBreakPellet")
+			{
+				StartCoroutine(DestroyBullet());
+			}
 		}
 
 		if (collision.gameObject.CompareTag("Boss"))
 		{
-			StartCoroutine(DestroyBullet());
+			StartCoroutine(DestroyBulletAlternate());
 		}
 	}
 
@@ -44,5 +47,14 @@ public class PelletManager : MonoBehaviour
 		yield return new WaitForSeconds(0.02f);
 
 		Destroy(gameObject);
+	}
+
+	IEnumerator DestroyBulletAlternate()
+	{
+		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
+
+		yield return new WaitForSeconds(0.02f);
+
+		Destroy(gameObject, 1f);
 	}
 }

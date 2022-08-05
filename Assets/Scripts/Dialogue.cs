@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     public bool isDone;
     public AudioSource typeSound1;
     public AudioSource typeSound2;
+    public GameObject[] ObjectsToActivateWhenDone;
 
     private int index;
 
@@ -60,6 +61,12 @@ public class Dialogue : MonoBehaviour
         else
         {
             isDone = true;
+
+			for (int i = 0; i < ObjectsToActivateWhenDone.Length; i++)
+			{
+                ObjectsToActivateWhenDone[i].SetActive(true);
+            }
+
             gameObject.SetActive(false);
         }
     }

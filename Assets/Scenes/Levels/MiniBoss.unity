@@ -292,8 +292,8 @@ Transform:
   - {fileID: 481048811}
   - {fileID: 1388539708}
   - {fileID: 504767884}
-  - {fileID: 1905160585}
   - {fileID: 1433303912}
+  - {fileID: 1905160585}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -972,7 +972,7 @@ GameObject:
   - component: {fileID: 285004706}
   - component: {fileID: 285004708}
   - component: {fileID: 285004707}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ButtonBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1178,11 +1178,11 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 5
 --- !u!60 &288521055
 PolygonCollider2D:
@@ -1233,7 +1233,10 @@ PolygonCollider2D:
       - {x: -0.5018066, y: -0.29748106}
       - {x: -0.70305884, y: -0.3088603}
       - {x: -0.7085031, y: -0.5546456}
-      - {x: -0.66267693, y: -0.5704715}
+      - {x: -0.6670846, y: -0.5701975}
+      - {x: -0.66108215, y: -0.57908976}
+      - {x: -0.6594142, y: -0.57908064}
+      - {x: -0.6622771, y: -0.5711086}
       - {x: -0.5547247, y: -0.57165176}
       - {x: -0.43881962, y: -0.57157254}
       - {x: -0.14614236, y: -0.5729112}
@@ -1350,12 +1353,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRend: {fileID: 288521053}
   rb2d: {fileID: 288521054}
-  jumpForce: 0
+  jumpForce: 7
   anim: {fileID: 288521058}
   miniBossParent: {fileID: 407925721}
+  distanceToCheck: 0.5
+  isGrounded: 0
   pos1: {fileID: 1066657740}
   pos2: {fileID: 771326305}
   startMovement: 0
+  startJumping: 0
 --- !u!114 &288521060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1817,7 +1823,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 10c892a0b54fb6340a13aed615da482d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.27450982}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2454,7 +2460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792379988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: -1.54, z: 0}
+  m_LocalPosition: {x: 7.512, y: -1.54, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2490,7 +2496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation: {fileID: 135690749}
   changeScenes: 1
-  sceneToChangeTo: 0
+  sceneToChangeTo: 11
 --- !u!1 &793495504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,7 +2775,7 @@ GameObject:
   - component: {fileID: 884692904}
   - component: {fileID: 884692906}
   - component: {fileID: 884692905}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ButtonBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2941,7 +2947,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 91fab69a8f9392c49a01997338e07672, type: 3}
-  m_Color: {r: 0.8313726, g: 0.7607844, b: 0.627451, a: 1}
+  m_Color: {r: 0.8352942, g: 0.7372549, b: 0.54509807, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3130,7 +3136,7 @@ MonoBehaviour:
   cs: {fileID: 1107280359}
   miniBoss: {fileID: 288521051}
   miniBossParent: {fileID: 407925721}
-  health: 10
+  health: 50
   healthBar: {fileID: 2426158593397813011}
   anim: {fileID: 288521058}
   redPanelAnim: {fileID: 793495507}
@@ -3147,6 +3153,7 @@ MonoBehaviour:
   - {fileID: 530155982}
   pelletPrefab: {fileID: 6884279484596477030, guid: 20e5a5d30fbd3d64f967648f0bccc4b2,
     type: 3}
+  goal: {fileID: 792379988}
   miniBossMovement: {fileID: 288521059}
   stompFx: {fileID: 1013927980}
   bossMusic: {fileID: 750186525}
@@ -3618,7 +3625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1034399412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3692,7 +3699,7 @@ GameObject:
   - component: {fileID: 1036837206}
   - component: {fileID: 1036837205}
   - component: {fileID: 1036837207}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3994,7 +4001,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.9150943, g: 0.8350644, b: 0.70358664, a: 1}
+  m_BackGroundColor: {r: 0.9622642, g: 0.8126459, b: 0.5582948, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4327,7 +4334,7 @@ Transform:
   - {fileID: 1659877104}
   - {fileID: 884692904}
   m_Father: {fileID: 31913695}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1543290255 stripped
 RectTransform:
@@ -4706,7 +4713,7 @@ GameObject:
   - component: {fileID: 1659877106}
   - component: {fileID: 1659877105}
   - component: {fileID: 1659877107}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5056,7 +5063,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 91fab69a8f9392c49a01997338e07672, type: 3}
-  m_Color: {r: 0.8313726, g: 0.7607844, b: 0.627451, a: 1}
+  m_Color: {r: 0.8352942, g: 0.7372549, b: 0.54509807, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5617,7 +5624,7 @@ PrefabInstance:
     - target: {fileID: 1552756635097385767, guid: 9b06aaaaab21ca941b58b2f518ac8e2e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1552756635097385767, guid: 9b06aaaaab21ca941b58b2f518ac8e2e,
         type: 3}
@@ -6039,7 +6046,7 @@ MonoBehaviour:
   moveLeft: 0
   moveRight: 0
   maxSpeed: 5
-  health: 3
+  health: 1
   isGroundedChecker: {fileID: 1823545147}
   checkGroundRadius: 0.05
   groundLayer:
@@ -6918,9 +6925,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 50
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

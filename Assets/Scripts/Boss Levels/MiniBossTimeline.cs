@@ -16,6 +16,7 @@ public class MiniBossTimeline : MonoBehaviour
     public Animator redPanelAnim;
     public GameObject[] pelletSpawners;
     public GameObject pelletPrefab;
+    public GameObject goal;
     public MiniBossMovement miniBossMovement;
 
     [Header("Audio")]
@@ -32,9 +33,9 @@ public class MiniBossTimeline : MonoBehaviour
     void Start()
     {
         dialogueBox.SetActive(false);
-        health = 10;
 
-        healthBar.value = 10;
+        healthBar.maxValue = health;
+        healthBar.value = health;
 
         StartCoroutine(MiniBossTime());
     }
@@ -46,10 +47,11 @@ public class MiniBossTimeline : MonoBehaviour
             StartCoroutine(BossMovement());
 		}
 
-        if (health == 0)
+        if (health <= 0)
         {
             bossDefeatedSound.Play();
             miniBossParent.SetActive(false);
+            goal.SetActive(true);
             gameObject.SetActive(false);
         }
     }
@@ -100,11 +102,12 @@ public class MiniBossTimeline : MonoBehaviour
         //redPanelAnim.Play("RedFlashingPanel", -1, 0);
         yield return new WaitForSeconds(0.5f);
         miniBossMovement.startMovement = true;
+        miniBossMovement.startJumping = true;
     }
 
     public void SpawnPellets()
 	{
-		for (int i = 0; i <= pelletSpawners.Length; i++)
+		for (int i = 0; i < pelletSpawners.Length; i++)
 		{
             Instantiate(pelletPrefab, pelletSpawners[i].transform.position, Quaternion.identity);
         }

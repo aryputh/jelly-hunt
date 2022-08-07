@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2351367425170473432}
   - component: {fileID: 2351367425170473433}
   - component: {fileID: 2231749103988352531}
+  - component: {fileID: -6323616388425058005}
   m_Layer: 7
   m_Name: Splatter1
   m_TagString: Untagged
@@ -97,3 +98,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRend: {fileID: 2351367425170473433}
+--- !u!114 &-6323616388425058005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351367425170473438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebbd17f85e141441b7043aa26a8669b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

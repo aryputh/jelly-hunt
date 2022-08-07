@@ -8,9 +8,12 @@ public class PelletManager : MonoBehaviour
 	public Rigidbody2D rb;
 	public GameObject splatter;
 
+	private GameObject boss;
+
 	// Use this for initialization
 	void Start()
 	{
+		boss = GameObject.FindGameObjectWithTag("Boss");
 		rb.velocity = transform.right * speed;
 		Destroy(gameObject, 2);
 	}
@@ -51,7 +54,7 @@ public class PelletManager : MonoBehaviour
 
 	IEnumerator DestroyBulletAlternate()
 	{
-		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
+		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity, boss.transform);
 
 		yield return new WaitForSeconds(0.02f);
 

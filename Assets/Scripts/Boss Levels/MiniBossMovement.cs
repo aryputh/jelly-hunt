@@ -10,6 +10,8 @@ public class MiniBossMovement : MonoBehaviour
     public float jumpForce;
     public Animator anim;
     public GameObject miniBossParent;
+    public float distanceToCheck = 0.5f;
+    public bool isGrounded;
 
     [Header("Sideways Movement")]
     public Transform pos1;
@@ -17,9 +19,12 @@ public class MiniBossMovement : MonoBehaviour
 
     [HideInInspector]
     public bool startMovement;
+    public bool startJumping;
 
     private bool doFlipX;
     private float timer;
+    private bool isJumping;
+    float velocity;
 
     // Start is called before the first frame update
     void Start()
@@ -48,13 +53,41 @@ public class MiniBossMovement : MonoBehaviour
             MoveBoss();
 		}
 
-		//if (startMovement)
-		//{
-		//	startMovement = false;
-        //
-		//	InvokeRepeating("ApplyJumpForce", 0, 2);
-		//}
-	}
+        if (startJumping)
+        {
+            startJumping = false;
+            Debug.Log("Starting jump movement...");
+
+            InvokeRepeating("ApplyJumpForce", 0, 2);
+        }
+    }
+
+	private void FixedUpdate()
+	{
+		if (isJumping)
+		{
+            velocity += (Physics.gravity.y * rb2d.gravityScale) * Time.deltaTime;
+
+            //velocity = jumpForce;
+
+            transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+
+            if (Physics2D.Raycast(transform.position, Vector2.down, distanceToCheck))
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
+
+            if (isGrounded && velocity < 0)
+            {
+                isJumping = false;
+                velocity = 0;
+            }
+        }
+    }
 
 	public void MoveBoss()
 	{
@@ -86,7 +119,13 @@ public class MiniBossMovement : MonoBehaviour
 
     public void ApplyJumpForce()
 	{
-        anim.Play("Colored_Boss", -1, 0);
-        rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-	}
+        if(isJumping == false)
+		{
+            anim.Play("Colored_Boss", -1, 0);
+            //rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+            isJumping = true;
+            velocity = jumpForce;
+        }
+    }
 }

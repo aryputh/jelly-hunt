@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Basic Management")]
+    public ParticleSystem footDust;
+    public float jumpDelay;
     private Rigidbody2D rb;
     public float speed = 1;
     public float jumpForce = 1;
@@ -41,8 +43,8 @@ public class PlayerMovement : MonoBehaviour
     public Button shootButton;
     public GameObject ammoBar;
 
-    [Header("Death")]
-    public Animator playerDieAnim;
+    [Header("Animations")]
+    public Animator playerAnim;
 
     [Header("Coyote Jump")]
     public float coyoteTime = 0.2f;
@@ -174,13 +176,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isGrounded)
             {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                coyoteTimeCounter = 0f;
+                StartCoroutine(DelayJump());
             }
             else if(coyoteTimeCounter > 0f)
             {
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-                coyoteTimeCounter = 0f;
+                StartCoroutine(DelayJump());
             }
         }
         
@@ -193,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
         if (colliders != null)
         {
             isGrounded = true;
+            footDust.enableEmission = true;
         }
         else
         {
@@ -201,6 +202,7 @@ public class PlayerMovement : MonoBehaviour
                 lastTimeGrounded = Time.time;
             }
             isGrounded = false;
+            footDust.enableEmission = false;
         }
     }
 
@@ -211,6 +213,16 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator DelayJump()
+	{
+        playerAnim.SetBool("playerJumping", true);
+        yield return new WaitForSeconds(jumpDelay);
+
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        coyoteTimeCounter = 0f;
+        playerAnim.SetBool("playerJumping", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -232,7 +244,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (health <= 0)
             {
-                playerDieAnim.SetTrigger("playerDead");
+                playerAnim.SetTrigger("playerDead");
                 
                 StartCoroutine(Restart());
             }
@@ -249,7 +261,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (health <= 0)
             {
-                playerDieAnim.SetTrigger("playerDead");
+                playerAnim.SetTrigger("playerDead");
 
                 StartCoroutine(Restart());
             }
@@ -268,7 +280,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("BossBottom"))
         {
             health = 0;
-            playerDieAnim.SetTrigger("playerDead");
+            playerAnim.SetTrigger("playerDead");
 
             StartCoroutine(Restart());
         }

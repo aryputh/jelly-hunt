@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Jelly Hunt
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 1, g: 0.6273585, b: 0.6273585, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.8588236, g: 0.8588236, b: 0.8588236, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: 5f5c41ee3dce3474b994fe0e9b479d25, type: 3}
+  - logo: {fileID: 21300000, guid: d3e83b21a16b1854e84ff0eed921e3f9, type: 3}
     duration: 2
   - logo: {fileID: 21300000, guid: 9696fb1053737e54098e15cced1c0680, type: 3}
     duration: 2
@@ -138,7 +138,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: b1
+  bundleVersion: b5
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -165,7 +165,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
-  AndroidBundleVersionCode: 2
+  AndroidBundleVersionCode: 5
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -253,8 +253,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: BUILDS/user.keystore'
-  AndroidKeyaliasName: key
+  AndroidKeystoreName: C:/Users/Aryan Puthran/Unity Games/KEYS/user.keystore
+  AndroidKeyaliasName: emailkey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -269,7 +269,7 @@ PlayerSettings:
   androidGamepadSupportLevel: 0
   chromeosInputEmulation: 1
   AndroidMinifyWithR8: 0
-  AndroidMinifyRelease: 0
+  AndroidMinifyRelease: 1
   AndroidMinifyDebug: 0
   AndroidValidateAppBundleSize: 1
   AndroidAppBundleSizeToValidate: 150

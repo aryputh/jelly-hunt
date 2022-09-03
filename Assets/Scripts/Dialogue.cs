@@ -7,6 +7,7 @@ public class Dialogue : MonoBehaviour
 {
     public Text dialogueText;
     public string[] lines;
+    public Color[] colors;
     public float textSpeed;
     public bool isDone;
     public AudioSource typeSound1;
@@ -19,6 +20,8 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         dialogueText.text = string.Empty;
+        dialogueText.color = colors[index];
+
         isDone = false;
 
         StartDialogue();
@@ -36,6 +39,7 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
+                dialogueText.color = colors[index];
                 dialogueText.text = lines[index];
             }
         }
@@ -54,6 +58,7 @@ public class Dialogue : MonoBehaviour
         {
             index++;
 
+            dialogueText.color = colors[index];
             dialogueText.text = string.Empty;
 
             StartCoroutine(TypeAnim());

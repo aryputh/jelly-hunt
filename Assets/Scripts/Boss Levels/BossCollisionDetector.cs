@@ -7,9 +7,17 @@ public class BossCollisionDetector : MonoBehaviour
 {
 	public UnityEvent whatToDo;
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	//private void OnCollisionEnter2D(Collision2D collision)
+	//{
+	//	if (collision.gameObject.CompareTag("Pellet"))
+	//	{
+	//		whatToDo.Invoke();
+	//	}
+	//}
+
+	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.CompareTag("Pellet"))
+		if (collision.CompareTag("Pellet"))
 		{
 			whatToDo.Invoke();
 		}

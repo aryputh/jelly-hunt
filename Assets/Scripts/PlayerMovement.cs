@@ -110,6 +110,13 @@ public class PlayerMovement : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
+
+        if(ammoBar.GetComponent<Slider>().value <= 0)
+		{
+            playerAnim.SetTrigger("playerDead");
+
+            StartCoroutine(Restart());
+        }
     }
 
     //Enables controls

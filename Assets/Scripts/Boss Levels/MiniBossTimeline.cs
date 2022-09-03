@@ -17,6 +17,8 @@ public class MiniBossTimeline : MonoBehaviour
     public GameObject[] pelletSpawners;
     public GameObject pelletPrefab;
     public GameObject goal;
+    public GameObject physicalButton1;
+    public GameObject physicalButton2;
     public MiniBossMovement miniBossMovement;
 
     [Header("Audio")]
@@ -52,11 +54,30 @@ public class MiniBossTimeline : MonoBehaviour
             bossDefeatedSound.Play();
             miniBossParent.SetActive(false);
             goal.SetActive(true);
-            gameObject.SetActive(false);
+
+            physicalButton1.SetActive(false);
+            physicalButton2.SetActive(false);
+
+            StartCoroutine(StartFadeBossMusic(bossMusic.GetComponent<AudioSource>(), 1, 0));
         }
     }
 
-	IEnumerator MiniBossTime()
+    IEnumerator StartFadeBossMusic(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        gameObject.SetActive(false);
+        yield break;
+    }
+
+    IEnumerator MiniBossTime()
     {
         Debug.Log("MiniBossTime");
 
@@ -84,6 +105,11 @@ public class MiniBossTimeline : MonoBehaviour
         dialogueBox.SetActive(true);
     }
 
+    public void StartBossMovementButton()
+	{
+        StartCoroutine(BossMovement());
+    }
+
     IEnumerator BossMovement()
     {
         Debug.Log("BossMovement");
@@ -107,22 +133,19 @@ public class MiniBossTimeline : MonoBehaviour
 
     public void SpawnPellets()
 	{
-		for (int i = 0; i < pelletSpawners.Length; i++)
-		{
-            Instantiate(pelletPrefab, pelletSpawners[i].transform.position, Quaternion.identity);
-        }
-	}
+        StartCoroutine(SpawnPelletsDelay(0.03f));
+    }
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-  //      if (collision.gameObject.CompareTag("Pellet"))
+		//if (collision.gameObject.CompareTag("Pellet"))
 		//{
-  //          print("Pellet hit boss!");
+		//	print("Pellet hit boss!");
 
-  //          StartCoroutine(DestroyBulletAlternate());
+		//	StartCoroutine(DestroyBulletAlternate());
 
-  //          Destroy(collision.gameObject, 3f);
-  //      }
+		//	Destroy(collision.gameObject, 3f);
+		//}
 	}
 
     IEnumerator DestroyBulletAlternate()
@@ -131,6 +154,18 @@ public class MiniBossTimeline : MonoBehaviour
 
         health--;
         healthBar.value = health;
+    }
+
+    IEnumerator SpawnPelletsDelay(float delay)
+    {
+        for (int i = 0; i < pelletSpawners.Length; i++)
+        {
+            Vector3 spawnPos = new Vector3(pelletSpawners[i].transform.position.x, pelletSpawners[i].transform.position.y, pelletPrefab.transform.position.z);
+
+            Instantiate(pelletPrefab, spawnPos, Quaternion.identity);
+
+            yield return new WaitForSeconds(delay);
+        }
     }
 
     public void PelletHitBoss()

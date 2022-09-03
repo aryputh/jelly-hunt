@@ -28,10 +28,10 @@ public class PelletManager : MonoBehaviour
 			}
 		}
 
-		if (collision.gameObject.CompareTag("Boss"))
-		{
-			StartCoroutine(DestroyBulletAlternate());
-		}
+		//if (collision.gameObject.CompareTag("Boss"))
+		//{
+		//	StartCoroutine(DestroyBulletAlternate());
+		//}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
@@ -40,6 +40,11 @@ public class PelletManager : MonoBehaviour
 		{
 			StartCoroutine(DestroyBullet());
 			other.tag = "Friendly";
+		}
+
+		if (other.CompareTag("Boss"))
+		{
+			StartCoroutine(DestroyBulletAlternate());
 		}
 	}
 
@@ -54,7 +59,7 @@ public class PelletManager : MonoBehaviour
 
 	IEnumerator DestroyBulletAlternate()
 	{
-		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity, boss.transform);
+		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity/*, boss.transform*/);
 
 		yield return new WaitForSeconds(0.02f);
 

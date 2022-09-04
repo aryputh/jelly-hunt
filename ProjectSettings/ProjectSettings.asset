@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Jelly Hunt
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.8588236, g: 0.8588236, b: 0.8588236, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.9215687, g: 0.69411767, b: 0.4784314, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: d3e83b21a16b1854e84ff0eed921e3f9, type: 3}
+  - logo: {fileID: 21300000, guid: f4ecdbdf3a0db604eb1cd5bd4e14d758, type: 3}
     duration: 2
   - logo: {fileID: 21300000, guid: 9696fb1053737e54098e15cced1c0680, type: 3}
     duration: 2
@@ -765,7 +765,7 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: e0d550a4-eb52-4368-b6fd-8fc8e15a5c97
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Jelly Hunt

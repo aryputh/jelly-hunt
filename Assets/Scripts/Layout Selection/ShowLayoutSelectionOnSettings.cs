@@ -16,7 +16,7 @@ public class ShowLayoutSelectionOnSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetInt("LayoutStyle") == layoutType)
+        if (PlayerPrefs.GetInt("LayoutStyle", 1) == layoutType)
         {
             selectionSprite.SetActive(true);
         }

@@ -16,7 +16,7 @@ public class ShowColorSelectionOnSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetString("PelletColor") == hexcode)
+        if (PlayerPrefs.GetString("PelletColor", "EC968E") == hexcode)
         {
             selectionSprite.SetActive(true);
         }

@@ -16,7 +16,7 @@ public class ToScene : MonoBehaviour
 
     IEnumerator StartLoading()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
 
         AsyncOperation asyncOp = SceneManager.LoadSceneAsync(sceneNumber);
 

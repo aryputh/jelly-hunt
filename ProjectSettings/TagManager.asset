@@ -13,6 +13,9 @@ TagManager:
   - Boss
   - WallNotBreakPellet
   - BossBottom
+  - EndlessEnemy
+  - JellyCoinText
+  - EndlessSwapDirection
   layers:
   - Default
   - TransparentFX
@@ -31,7 +34,7 @@ TagManager:
   - PP
   - EndlessModeBorder
   - 
-  - 
+  - NoPlayerInteraction
   - 
   - 
   - 

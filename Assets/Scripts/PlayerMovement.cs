@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -49,6 +49,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Coyote Jump")]
     public float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
+
+    [Header("Endless Mode")]
+    public UnityEvent onEndlessDie;
 
     // Start is called before the first frame update
     void Start()
@@ -254,6 +257,20 @@ public class PlayerMovement : MonoBehaviour
                 playerAnim.SetTrigger("playerDead");
                 
                 StartCoroutine(Restart());
+            }
+        }
+
+        if (collision.CompareTag("EndlessEnemy"))
+        {
+            StopMovement();
+
+            health--;
+
+            if (health <= 0)
+            {
+                playerAnim.SetTrigger("playerDead");
+
+                onEndlessDie.Invoke();
             }
         }
     }

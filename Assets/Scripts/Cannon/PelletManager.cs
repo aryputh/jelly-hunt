@@ -42,6 +42,12 @@ public class PelletManager : MonoBehaviour
 			other.tag = "Friendly";
 		}
 
+		if (other.CompareTag("EndlessEnemy"))
+		{
+			StartCoroutine(DestroyBullet());
+			other.tag = "Friendly";
+		}
+
 		if (other.CompareTag("Boss"))
 		{
 			StartCoroutine(DestroyBulletAlternate());

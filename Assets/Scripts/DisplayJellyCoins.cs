@@ -10,11 +10,11 @@ public class DisplayJellyCoins : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        display.text = PlayerPrefs.GetInt("totalJellyCoins", 0).ToString();
+        display.text = PlayerPrefs.GetInt("jellyScore", 0).ToString();
     }
 
     public void UpdateCoins()
     {
-        display.text = PlayerPrefs.GetInt("totalJellyCoins", 0).ToString();
+        display.text = PlayerPrefs.GetInt("jellyScore", 0).ToString();
     }
 }

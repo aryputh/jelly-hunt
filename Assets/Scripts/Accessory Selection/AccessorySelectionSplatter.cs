@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PP_Show : MonoBehaviour
+public class AccessorySelectionSplatter : MonoBehaviour
 {
-    public GameObject splatterGameobject;
-    public int id;
+    public string accessoryCode;
+    public GameObject selectionSprite;
 
     // Update is called once per frame
     void Update()
@@ -16,13 +16,13 @@ public class PP_Show : MonoBehaviour
     // Manually updates splatter status
     public void ManuallyUpdate()
     {
-        if (PlayerPrefs.GetInt("PostProcess", 0) == id)
+        if (PlayerPrefs.GetString("AccessoryCode", "") == accessoryCode)
         {
-            splatterGameobject.SetActive(true);
+            selectionSprite.SetActive(true);
         }
         else
         {
-            splatterGameobject.SetActive(false);
+            selectionSprite.SetActive(false);
         }
     }
 }

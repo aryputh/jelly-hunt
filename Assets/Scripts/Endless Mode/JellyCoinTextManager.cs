@@ -5,26 +5,33 @@ using UnityEngine;
 
 public class JellyCoinTextManager : MonoBehaviour
 {
-    public Text jellyCoinText;
-    private int jellyCoins;
-    private int totalJellyCoins;
+    public Text currentJellyScoreText;
+    public Text highJellyScoreText;
+    private int currentJellyCoins;
+    private int highJellyScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        jellyCoinText.text = "0";
-        jellyCoins = 0;
-        totalJellyCoins = PlayerPrefs.GetInt("totalJellyCoins", 0);
+        highJellyScore = PlayerPrefs.GetInt("jellyScore", 0);
+        currentJellyCoins = 0;
+
+        currentJellyScoreText.text = "0";
+        highJellyScoreText.text = highJellyScore.ToString();
     }
 
     public void SavedABlob()
 	{
-        jellyCoins += 5;
-        totalJellyCoins += 5;
+        currentJellyCoins += 5;
 
-        jellyCoinText.text = jellyCoins.ToString();
-        PlayerPrefs.SetInt("totalJellyCoins", totalJellyCoins);
+        currentJellyScoreText.text = currentJellyCoins.ToString();
 
-        print(totalJellyCoins);
+        if (currentJellyCoins > highJellyScore)
+        {
+            PlayerPrefs.SetInt("jellyScore", currentJellyCoins);
+            highJellyScore = PlayerPrefs.GetInt("jellyScore", 0);
+
+            highJellyScoreText.text = highJellyScore.ToString();
+        }
     }
 }

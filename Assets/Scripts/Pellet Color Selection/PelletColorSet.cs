@@ -10,6 +10,6 @@ public class PelletColorSet : MonoBehaviour
 	{
 		PlayerPrefs.SetString("PelletColor", ColorUtility.ToHtmlStringRGB(color));
 
-		Debug.Log("Set color to:" + ColorUtility.ToHtmlStringRGB(color));
+		//Debug.Log("Set color to: " + ColorUtility.ToHtmlStringRGB(color));
 	}
 }

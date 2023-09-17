@@ -7,16 +7,16 @@ public class ShowColorSelectionOnSettings : MonoBehaviour
     public string hexcode;
     public GameObject selectionSprite;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (PlayerPrefs.GetString("PelletColor", "EC968E") == hexcode)
+        ManuallyUpdate();
+    }
+
+    // Manually updates splatter status
+    public void ManuallyUpdate()
+    {
+        if (PlayerPrefs.GetString("AccessoryCode", "") == hexcode)
         {
             selectionSprite.SetActive(true);
         }

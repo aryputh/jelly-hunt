@@ -7,14 +7,14 @@ public class ShowLayoutSelectionOnSettings : MonoBehaviour
     public int layoutType;
     public GameObject selectionSprite;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
+    {
+        ManuallyUpdate();
+    }
+
+    // Manually update the status
+    public void ManuallyUpdate()
     {
         if (PlayerPrefs.GetInt("LayoutStyle", 1) == layoutType)
         {

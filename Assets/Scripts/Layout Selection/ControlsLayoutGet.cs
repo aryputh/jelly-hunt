@@ -43,7 +43,7 @@ public class ControlsLayoutGet : MonoBehaviour
 			shootrect.anchorMax = new Vector2(1, 0);
 			shootrect.anchoredPosition = new Vector2(-120, 30);
 
-			Debug.Log("setup buttons - 1");
+			//Debug.Log("setup buttons - 1");
 		}
 		else if(layout == 2)
 		{
@@ -63,7 +63,7 @@ public class ControlsLayoutGet : MonoBehaviour
 			shootrect.anchorMax = new Vector2(0, 0);
 			shootrect.anchoredPosition = new Vector2(125, 30);
 
-			Debug.Log("setup buttons - 2");
+			//Debug.Log("setup buttons - 2");
 		}
 	}
 

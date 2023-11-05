@@ -6,29 +6,25 @@ using UnityEngine;
 public class BackgroundManager : MonoBehaviour
 {
     public GameObject animation;
+    public AudioSource flowerReachedSound;
     public bool changeScenes;
     public int sceneToChangeTo;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
             animation.SetActive(true);
+            flowerReachedSound.Play();
             StartCoroutine(ChangeScenes());
         }
     }
 
     public IEnumerator ChangeScenes()
     {
-        if(changeScenes == true)
+        if(changeScenes)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             SceneManager.LoadSceneAsync(sceneToChangeTo);
         }
     }

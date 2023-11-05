@@ -16,6 +16,7 @@ TagManager:
   - EndlessEnemy
   - JellyCoinText
   - EndlessSwapDirection
+  - Menu Music
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,55 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background/Sky
+    uniqueID: 3154691975
+    locked: 0
+  - name: Background/ColoredSky
+    uniqueID: 1079181157
+    locked: 0
+  - name: Background/Buildings
+    uniqueID: 163876717
+    locked: 0
+  - name: Background/ColoredBuildings
+    uniqueID: 1551490215
+    locked: 0
+  - name: Background/Heavy Grass
+    uniqueID: 1851631507
+    locked: 0
+  - name: Background/Colored Heavy Grass
+    uniqueID: 4183381811
+    locked: 0
+  - name: Terrain/Platforms
+    uniqueID: 2443325219
+    locked: 0
+  - name: Terrain/Colored Platforms
+    uniqueID: 1620400017
+    locked: 0
+  - name: Terrain/Floor
+    uniqueID: 3869515141
+    locked: 0
+  - name: Terrain/Colored Floor
+    uniqueID: 4175079083
+    locked: 0
+  - name: Terrain/Level Borders
+    uniqueID: 2525429721
+    locked: 0
+  - name: Blobs/Enemies
+    uniqueID: 3659729585
+    locked: 0
+  - name: Blobs/Players
+    uniqueID: 66566303
+    locked: 0
+  - name: Extra/Particles
+    uniqueID: 2137250381
+    locked: 0
+  - name: Extra/Weapons
+    uniqueID: 3019111559
+    locked: 0
+  - name: Extra/Accessories
+    uniqueID: 3947725255
+    locked: 0
+  - name: Extra/Powerups
+    uniqueID: 4271906475
     locked: 0

@@ -24,7 +24,7 @@ public class MiniBossTimeline : MonoBehaviour
     [Header("Audio")]
     public AudioSource stompFx;
     public GameObject bossMusic;
-    public AudioSource regMusic;
+    private AudioSource regMusic;
     public AudioSource bossDefeatedSound;
 
     [Header("Dialogue")]
@@ -40,6 +40,8 @@ public class MiniBossTimeline : MonoBehaviour
         healthBar.value = health;
 
         StartCoroutine(MiniBossTime());
+
+        regMusic = GameObject.FindGameObjectWithTag("Menu Music").GetComponent<AudioSource>();
     }
 
 	private void Update()

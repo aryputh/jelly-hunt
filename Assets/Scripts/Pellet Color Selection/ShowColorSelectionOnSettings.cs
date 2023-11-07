@@ -16,7 +16,7 @@ public class ShowColorSelectionOnSettings : MonoBehaviour
     // Manually updates splatter status
     public void ManuallyUpdate()
     {
-        if (PlayerPrefs.GetString("AccessoryCode", "") == hexcode)
+        if (PlayerPrefs.GetString("PelletColor", "EC968E") == hexcode)
         {
             selectionSprite.SetActive(true);
         }

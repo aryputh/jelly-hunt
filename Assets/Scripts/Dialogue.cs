@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    public Text dialogueText;
+    public TMP_Text dialogueText;
     public string[] lines;
     public Color[] colors;
     public float textSpeed;

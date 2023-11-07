@@ -26,6 +26,7 @@ public class MiniBossTimeline : MonoBehaviour
     public GameObject bossMusic;
     private AudioSource regMusic;
     public AudioSource bossDefeatedSound;
+    public AudioSource pelletShootSound;
 
     [Header("Dialogue")]
     public Dialogue dialogueScript;
@@ -135,7 +136,7 @@ public class MiniBossTimeline : MonoBehaviour
 
     public void SpawnPellets()
 	{
-        StartCoroutine(SpawnPelletsDelay(0.03f));
+        StartCoroutine(SpawnPelletsDelay(0.1f));
     }
 
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -165,6 +166,7 @@ public class MiniBossTimeline : MonoBehaviour
             Vector3 spawnPos = new Vector3(pelletSpawners[i].transform.position.x, pelletSpawners[i].transform.position.y, pelletPrefab.transform.position.z);
 
             Instantiate(pelletPrefab, spawnPos, Quaternion.identity);
+            pelletShootSound.Play();
 
             yield return new WaitForSeconds(delay);
         }
@@ -172,7 +174,7 @@ public class MiniBossTimeline : MonoBehaviour
 
     public void PelletHitBoss()
 	{
-        print("Pellet hit boss!");
+        //print("Pellet hit boss!");
 
         StartCoroutine(DestroyBulletAlternate());
 

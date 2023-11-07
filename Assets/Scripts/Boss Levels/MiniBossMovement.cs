@@ -49,14 +49,14 @@ public class MiniBossMovement : MonoBehaviour
 
         if (startMovement)
 		{
-            Debug.Log("Starting boss movement...");
+            //Debug.Log("Starting boss movement...");
             MoveBoss();
 		}
 
         if (startJumping)
         {
             startJumping = false;
-            Debug.Log("Starting jump movement...");
+            //Debug.Log("Starting jump movement...");
 
             InvokeRepeating("ApplyJumpForce", 0, 2);
         }
@@ -100,7 +100,7 @@ public class MiniBossMovement : MonoBehaviour
 		{
             doFlipX = true;
             timer = 0;
-            Debug.Log("Flipped boss to face right.");
+            //Debug.Log("Flipped boss to face right.");
         }
         
         if (doFlipX == true && miniBossParent.transform.position.x != 4.9f)
@@ -111,7 +111,7 @@ public class MiniBossMovement : MonoBehaviour
         {
             doFlipX = false;
             timer = 0;
-            Debug.Log("Flipped boss to face left.");
+            //Debug.Log("Flipped boss to face left.");
         }
 
         //spriteRend.flipX = doFlipX;

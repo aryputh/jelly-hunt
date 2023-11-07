@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class VersionText : MonoBehaviour
 {
-    public Text versionText;
+    public TMP_Text versionText;
 
     // Start is called before the first frame update
     void Start()

@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class CongratsDialogueBox : MonoBehaviour
 {
     [Header("Basic Values")]
-    public Text message;
+    public TMP_Text message;
     public GameObject box;
 
     [Header("Customization")]

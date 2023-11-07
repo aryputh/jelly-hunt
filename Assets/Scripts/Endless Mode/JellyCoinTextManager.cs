@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class JellyCoinTextManager : MonoBehaviour
 {
-    public Text currentJellyScoreText;
-    public Text highJellyScoreText;
+    public TMP_Text currentJellyScoreText;
+    public TMP_Text highJellyScoreText;
     private int currentJellyCoins;
     private int highJellyScore;
 

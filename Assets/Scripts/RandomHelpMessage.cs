@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class RandomHelpMessage : MonoBehaviour
 {
-    public Text messageText;
+    public TMP_Text messageText;
     public string[] messages;
 
     // Start is called before the first frame update

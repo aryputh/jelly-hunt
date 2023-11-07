@@ -1243,8 +1243,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -635237711
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: 7005685455034978435, guid: 328d0f8db2766534e8d67e751c7489c1,
     type: 3}
@@ -2349,7 +2349,6 @@ GameObject:
   m_Component:
   - component: {fileID: 750186526}
   - component: {fileID: 750186527}
-  - component: {fileID: 750186528}
   m_Layer: 0
   m_Name: Spooky Audio Source
   m_TagString: Untagged
@@ -2382,9 +2381,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7a55911654283594a87a6f99636b5cf6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6638e04fd92721c4b885dbf959a0ccd8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2468,20 +2467,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &750186528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750186525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3596846ebd02e04f9747e4d19b33289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeInTime: 2
-  finalMusicVolume: 0.1
 --- !u!1 &751061199
 GameObject:
   m_ObjectHideFlags: 0

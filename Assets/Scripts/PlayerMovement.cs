@@ -7,28 +7,34 @@ using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Basic Management")]
+    [Header("Basic")]
     public ParticleSystem footDust;
-    public float jumpDelay;
-    private Rigidbody2D rb;
-    public float speed = 1;
-    public float jumpForce = 1;
-    public SpriteRenderer player;
-    public bool moveLeft, moveRight;
-    public float maxSpeed;
+    public float jumpDelay = 0.01f;
+    public float speed = 2.8f;
+    public float jumpForce = 7.2f;
+    [HideInInspector] public bool moveLeft, moveRight;
+    public float maxSpeed = 5f;
     public int health = 1;
+    Rigidbody2D rb;
+    SpriteRenderer playerRenderer;
+    Animator playerAnim;
+    ParticleSystem.EmissionModule emissionModule;
 
-    [Header("Prevents Unlimited Jumps")]
-    bool isGrounded = false;
+    [Header("Jumping Detection")]
     public Transform isGroundedChecker;
     public float checkGroundRadius;
     public LayerMask groundLayer;
+    bool isGrounded = false;
 
-    [Header("Jump Physics")]
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
-    public float rememberGroundedFor;
+    [Header("Jumping Physics")]
+    public float fallMultiplier = 3f;
+    public float lowJumpMultiplier = 0.7f;
+    public float rememberGroundedFor = 0.2f;
     float lastTimeGrounded;
+
+    [Header("Jumping Extras")]
+    public float coyoteTime = 0.1f;
+    float coyoteTimeCounter;
 
     [Header("Controls")]
     public bool controlsOn = true;
@@ -43,13 +49,6 @@ public class PlayerMovement : MonoBehaviour
     public Button shootButton;
     public GameObject ammoBar;
 
-    [Header("Animations")]
-    public Animator playerAnim;
-
-    [Header("Coyote Jump")]
-    public float coyoteTime = 0.2f;
-    private float coyoteTimeCounter;
-
     [Header("Endless Mode")]
     public UnityEvent onEndlessDie;
 
@@ -57,6 +56,10 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerRenderer = GetComponent<SpriteRenderer>();
+        playerAnim = GetComponent<Animator>();
+        emissionModule = footDust.emission;
+
         moveLeft = false;
         moveRight = false;
 
@@ -71,40 +74,47 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // FixedUpdate is called every timestep
     private void FixedUpdate()
     {
-        //Constantly moves player.
+        //Constantly moves player
         if (moveLeft)
         {
-            if (rb.velocity.x <= maxSpeed && rb.velocity.x >= -maxSpeed)
+            if (rb.velocity.x <= Mathf.Abs(maxSpeed))
             {
-                rb.AddForce(Vector2.left * speed, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.left * speed, ForceMode2D.Force);
             }
         }
 
         if (moveRight)
         {
-            if (rb.velocity.x <= maxSpeed && rb.velocity.x >= -maxSpeed)
+            if (rb.velocity.x <= Mathf.Abs(maxSpeed))
             {
-                rb.AddForce(Vector2.right * speed, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
             }
         }
 
-        if (rb.velocity.y >= 0)
-        {
-            rb.gravityScale = 1f;
-        }
-        else if (rb.velocity.y < 0)
+        // Increase gravity if falling
+        if (rb.velocity.y < 0)
         {
             rb.gravityScale = 3f;
+        }
+        else
+        {
+            rb.gravityScale = 1f;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckIfGrounded();
+        // Check if grounded every 3 frames
+        if (Time.frameCount % 3 == 0)
+        {
+            CheckIfGrounded();
+        }
 
+        // Reset coyote time
         if (isGrounded)
         {
             coyoteTimeCounter = coyoteTime;
@@ -114,7 +124,8 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if(ammoBar.GetComponent<Slider>().value <= 0)
+        // Check ammo every 5 frames
+        if(Time.frameCount % 5 == 0 && ammoBar.GetComponent<Slider>().value <= 0)
 		{
             playerAnim.SetTrigger("playerDead");
 
@@ -146,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
         eventSystem.SetSelectedGameObject(null);
     }
 
-    //Controls left movement.
+    //Controls left movement
     public void MovePlayerLeft()
     {
         if (controlsOn)
@@ -156,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Controls right movement.
+    //Controls right movement
     public void MovePlayerRight()
     {
         if (controlsOn)
@@ -166,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Stops player movement.
+    //Stops player movement
     public void StopMovement()
     {
         if (controlsOn)
@@ -179,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //Controls jumping.
+    //Controls jumping
     public void Jump()
     {
         if (controlsOn)
@@ -196,14 +207,15 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    //Check before jumping.
+    //Check before jumping
     void CheckIfGrounded()
     {
         Collider2D colliders = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
+        
         if (colliders != null)
         {
             isGrounded = true;
-            footDust.enableEmission = true;
+            emissionModule.enabled = true;
         }
         else
         {
@@ -211,8 +223,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 lastTimeGrounded = Time.time;
             }
+
             isGrounded = false;
-            footDust.enableEmission = false;
+            emissionModule.enabled = false;
         }
     }
 
@@ -232,6 +245,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         coyoteTimeCounter = 0f;
+
         playerAnim.SetBool("playerJumping", false);
     }
 
@@ -257,20 +271,6 @@ public class PlayerMovement : MonoBehaviour
                 playerAnim.SetTrigger("playerDead");
                 
                 StartCoroutine(Restart());
-            }
-        }
-
-        if (collision.CompareTag("EndlessEnemy"))
-        {
-            StopMovement();
-
-            health--;
-
-            if (health <= 0)
-            {
-                playerAnim.SetTrigger("playerDead");
-
-                onEndlessDie.Invoke();
             }
         }
     }
@@ -307,6 +307,20 @@ public class PlayerMovement : MonoBehaviour
             playerAnim.SetTrigger("playerDead");
 
             StartCoroutine(Restart());
+        }
+
+        if (collision.gameObject.CompareTag("EndlessEnemy"))
+        {
+            StopMovement();
+
+            health--;
+
+            if (health <= 0)
+            {
+                playerAnim.SetTrigger("playerDead");
+
+                onEndlessDie.Invoke();
+            }
         }
     }
 }

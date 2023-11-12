@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EndlessEnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public GameObject[] spawners;
+    public GameObject[] enemyPrefab;
+    public GameObject[] enemySpawners;
     public float startDelay;
     public float spawnDelay;
 
@@ -15,10 +15,9 @@ public class EndlessEnemySpawner : MonoBehaviour
         InvokeRepeating("SpawnEnemy", startDelay, spawnDelay);
     }
 
+    // Spawns an enemy at a random lcoation
     void SpawnEnemy()
 	{
-        int spawnerId = Random.Range(0, spawners.Length);
-
-        Instantiate(enemyPrefab, spawners[spawnerId].transform.position, Quaternion.identity);
+        Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)], enemySpawners[Random.Range(0, enemySpawners.Length)].transform.position, Quaternion.identity);
 	}
 }

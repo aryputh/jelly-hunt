@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2351367425170473432}
   - component: {fileID: 2351367425170473433}
+  - component: {fileID: 2348474846748016076}
   - component: {fileID: 2231749103988352531}
-  - component: {fileID: -6323616388425058005}
+  - component: {fileID: -238931711764617441}
   m_Layer: 7
   m_Name: Splatter1
   m_TagString: Untagged
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1275855737
-  m_SortingLayer: 3
+  m_SortingLayerID: -1851642077
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 34caa34066626b548875bef9bc72b1a2, type: 3}
   m_Color: {r: 0.9245283, g: 0.48406905, b: 0.8440725, a: 1}
@@ -86,6 +87,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!95 &2348474846748016076
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351367425170473438}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a140d398cca44664baf0a8bb7e2391c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2231749103988352531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRend: {fileID: 2351367425170473433}
---- !u!114 &-6323616388425058005
+--- !u!114 &-238931711764617441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,6 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2351367425170473438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebbd17f85e141441b7043aa26a8669b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f31e959fc06ac947b3ab2d35458b1ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 3.2

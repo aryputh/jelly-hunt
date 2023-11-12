@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1275855737
-  m_SortingLayer: 10
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 89712aac95799e641bbd365128e65a7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -105,7 +105,7 @@ MonoBehaviour:
   bulletShootSound: {fileID: 0}
   shootButton: {fileID: 0}
   pm: {fileID: 0}
-  ammo: 25
+  ammo: 5
   ammoBar: {fileID: 0}
   infiniteAmmo: 0
   eventSystem: {fileID: 0}
@@ -197,7 +197,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1275855737
-  m_SortingLayer: 10
+  m_SortingLayer: 14
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
     type: 3}

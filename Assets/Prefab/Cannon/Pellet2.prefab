@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3546986971999778564}
   - component: {fileID: 2997483977635842162}
   - component: {fileID: 3738770256191407518}
-  - component: {fileID: 694728499999028102}
   - component: {fileID: 46166739086247382}
+  - component: {fileID: 694728499999028102}
   m_Layer: 12
   m_Name: Pellet2
   m_TagString: Pellet
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1275855737
-  m_SortingLayer: 10
+  m_SortingLayer: 14
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 141990b40d0d483458b88126ad95c20a, type: 3}
   m_Color: {r: 0.7529412, g: 0.44313732, b: 0.44313726, a: 1}
@@ -108,22 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!114 &694728499999028102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6884279484596477030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6747037b36bfef547aeaf734ee8dfc83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  rb: {fileID: 3738770256191407518}
-  splatter: {fileID: 2351367425170473438, guid: f803e09f7742b8841be4d14de246ddf9,
-    type: 3}
 --- !u!58 &46166739086247382
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -140,3 +124,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &694728499999028102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6884279484596477030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6747037b36bfef547aeaf734ee8dfc83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  splatterParticles: {fileID: 2351367425170473438, guid: f803e09f7742b8841be4d14de246ddf9,
+    type: 3}

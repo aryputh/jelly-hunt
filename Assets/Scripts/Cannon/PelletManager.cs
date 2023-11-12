@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class PelletManager : MonoBehaviour
 {
-	public float speed = 20;
-	public Rigidbody2D rb;
-	public GameObject splatter;
+	public float speed = 10;
+	public GameObject splatterParticles;
 
-	private GameObject boss;
+	GameObject boss;
+    Rigidbody2D rb;
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
 	{
+		rb = GetComponent<Rigidbody2D>();
 		boss = GameObject.FindGameObjectWithTag("Boss");
+
 		rb.velocity = transform.right * speed;
 		Destroy(gameObject, 2);
 	}
@@ -24,51 +26,35 @@ public class PelletManager : MonoBehaviour
 		{
 			if (collision.gameObject.tag != "WallNotBreakPellet")
 			{
-				StartCoroutine(DestroyBullet());
+				DestroyBullet();
 			}
 		}
-
-		//if (collision.gameObject.CompareTag("Boss"))
-		//{
-		//	StartCoroutine(DestroyBulletAlternate());
-		//}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)
     {
 		if (other.CompareTag("Enemy"))
 		{
-			StartCoroutine(DestroyBullet());
+            DestroyBullet();
 			other.tag = "Friendly";
 		}
 
 		if (other.CompareTag("EndlessEnemy"))
 		{
-			StartCoroutine(DestroyBullet());
+            DestroyBullet();
 			other.tag = "Friendly";
 		}
 
 		if (other.CompareTag("Boss"))
 		{
-			StartCoroutine(DestroyBulletAlternate());
+            DestroyBullet();
 		}
 	}
 
-	IEnumerator DestroyBullet()
+	private void DestroyBullet()
     {
-		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
+		Instantiate(splatterParticles, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
 
-		yield return new WaitForSeconds(0.02f);
-
-		Destroy(gameObject);
-	}
-
-	IEnumerator DestroyBulletAlternate()
-	{
-		Instantiate(splatter, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity/*, boss.transform*/);
-
-		yield return new WaitForSeconds(0.02f);
-
-		Destroy(gameObject, 1f);
+		Destroy(gameObject, 0.02f);
 	}
 }

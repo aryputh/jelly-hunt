@@ -10,7 +10,7 @@ public class VersionText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Application Version: v" + Application.version);
-        versionText.text = "v" + Application.version + " ";
+        //Debug.Log("Application Version: v" + Application.version);
+        versionText.text = "v" + Application.version;
     }
 }

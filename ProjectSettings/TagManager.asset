@@ -84,9 +84,6 @@ TagManager:
   - name: Terrain/Colored Floor
     uniqueID: 4175079083
     locked: 0
-  - name: Terrain/Level Borders
-    uniqueID: 2525429721
-    locked: 0
   - name: Blobs/Enemies
     uniqueID: 3659729585
     locked: 0
@@ -104,4 +101,7 @@ TagManager:
     locked: 0
   - name: Extra/Powerups
     uniqueID: 4271906475
+    locked: 0
+  - name: Terrain/Level Borders
+    uniqueID: 2525429721
     locked: 0

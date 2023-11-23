@@ -84,6 +84,9 @@ TagManager:
   - name: Terrain/Colored Floor
     uniqueID: 4175079083
     locked: 0
+  - name: Extra/AccessoriesBehindPlayer
+    uniqueID: 3947725255
+    locked: 0
   - name: Blobs/Enemies
     uniqueID: 3659729585
     locked: 0
@@ -96,8 +99,8 @@ TagManager:
   - name: Extra/Weapons
     uniqueID: 3019111559
     locked: 0
-  - name: Extra/Accessories
-    uniqueID: 3947725255
+  - name: Extra/AccessoriesFrontPlayer
+    uniqueID: 863317335
     locked: 0
   - name: Extra/Powerups
     uniqueID: 4271906475
